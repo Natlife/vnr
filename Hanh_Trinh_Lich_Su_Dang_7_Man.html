@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e3038">
+<meta name="description" content="Hành Trình Lịch Sử Đảng: web game đi cảnh 7 màn, 70 câu hỏi VNR, tích xu, mở huy hiệu và tùy chỉnh trang phục.">
+<title>Hành Trình Lịch Sử Đảng | Game VNR 7 màn</title>
+<style>
+:root{--navy:#102f37;--navy2:#0c2530;--gold:#edb454;--red:#bf4f45;--wine:#9f3d36;--paper:#fbf7ed;--cream:#f4ecd9;--text:#1b3540;--muted:#697781;--stroke:#e0d5bf;--teal:#237e6c}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;overflow-x:hidden}
+body{font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:#fff;background:radial-gradient(ellipse at 18% 10%,#24565a 0,transparent 32%),radial-gradient(ellipse at 88% 85%,#204052 0,transparent 31%),linear-gradient(145deg,#091f29,#103640 58%,#0d2834)}
+body:before{content:"";position:fixed;inset:0;opacity:.10;pointer-events:none;background-image:linear-gradient(90deg,#ffffff15 1px,transparent 1px),linear-gradient(#ffffff15 1px,transparent 1px);background-size:32px 32px}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}button:disabled{opacity:.48;cursor:not-allowed}
+.wrap{width:min(1320px,calc(100% - 28px));margin:0 auto;position:relative;padding-bottom:30px}
+.site-top{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-symbol{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#f1b956;color:#7d382d;font-size:23px;border:3px solid #ffe1a2;box-shadow:0 4px 0 #0b1f25}
+.brand-title{font-size:14px;font-weight:1000;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}.brand small{display:block;color:#a9d0d0;letter-spacing:.14em;font-weight:750;font-size:10px;margin-top:4px}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.balance{display:flex;align-items:center;gap:5px;padding:9px 11px;background:#f8edcf1c;border:1px solid #f0db9a66;border-radius:10px;color:#fff2d0;font-weight:950;font-size:13px;white-space:nowrap}
+.nav-btn{background:#ffffff14;border:1px solid #ffffff4a;color:#f8f7ee;padding:10px 13px;border-radius:10px;font-size:12px;font-weight:900;white-space:nowrap;transition:.15s}
+.nav-btn:hover{background:#ffffff2b;transform:translateY(-1px)}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:7px 0 20px}.eyebrow{color:#f7c574;font-size:11px;text-transform:uppercase;font-weight:950;letter-spacing:.2em;margin-bottom:4px}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(30px,4vw,52px);line-height:1.05;margin:0;font-weight:900;letter-spacing:-.035em;color:#fff9e8}.hero p{margin:9px 0 0;color:#c4d9d8;font-size:13px;max-width:760px;line-height:1.5}
+.hero-meta{flex-shrink:0;border:1px solid #e9c178;border-radius:12px;padding:11px 14px;font-size:13px;font-weight:900;color:#ffe2a6;background:#152f3e}
+.frame{background:var(--paper);border:5px solid #e7cc92;border-radius:20px;overflow:hidden;box-shadow:0 12px 0 #061a23,0 23px 70px #03151c99}
+.hud{padding:12px 19px;display:flex;align-items:center;gap:13px;background:#fbf7ee;border-bottom:2px solid #e6dac2;color:var(--text);min-height:78px}
+.hud-icon{width:48px;height:48px;border-radius:12px;background:#eee6d5;display:grid;place-items:center;font-size:27px;flex-shrink:0}
+.hud-copy{flex:1;min-width:0}.hud-kicker{font-size:10px;text-transform:uppercase;font-weight:900;color:#8b7e67;letter-spacing:.13em}.hud-copy strong{font-size:16px;display:block;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hud-stat{text-align:center;min-width:82px;padding:0 8px;border-left:1px solid #e5dac4}.hud-stat small{display:block;color:#7d8283;text-transform:uppercase;letter-spacing:.1em;font-size:10px;font-weight:950;margin-bottom:3px}.hud-stat strong{font-size:17px;font-family:ui-monospace,Consolas,monospace;font-weight:900;white-space:nowrap}
+.hud-stat .lives{font-family:Arial,sans-serif;letter-spacing:1px;color:#be5650;font-size:18px}.meter{background:#eae2d1;display:flex;align-items:center;gap:5px;padding:10px 18px;border-bottom:2px solid #d9cdb6}
+.meter-label{font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:#626f70;margin-right:5px}.meter-dots{display:flex;flex:1;justify-content:space-between;gap:6px;max-width:760px}.dot{height:10px;flex:1;border-radius:8px;background:#d0c7b4;border:1px solid #bdb29e}.dot.done{background:#3e9d7f;border-color:#308a70}.dot.now{background:#e7ad56;border-color:#ce8e38;box-shadow:0 0 0 2px #f9efd1}.meter-right{margin-left:auto;color:#655b4c;font-size:12px;font-weight:900}
+.viewport{position:relative;aspect-ratio:1120/550;min-height:295px;overflow:hidden;background:#a5c8cc}
+#gameCanvas{display:block;width:100%;height:100%;image-rendering:pixelated}.scene-label{position:absolute;left:15px;top:15px;padding:7px 11px;background:#163d43ec;border:2px solid #f0e3be;border-radius:9px;box-shadow:0 3px 0 #0a272f;color:#fff;font-size:11px;letter-spacing:.05em;font-weight:900;pointer-events:none}.scene-toast{position:absolute;top:15px;left:50%;transform:translateX(-50%);border:2px solid #f3d99c;background:#fef6dc;box-shadow:0 5px 0 #152b3350;color:#785433;border-radius:9px;font-weight:950;padding:10px 15px;z-index:4;pointer-events:none;white-space:nowrap;font-size:13px}.scene-toast[hidden]{display:none!important}
+.overlay{position:absolute;inset:0;z-index:6;display:grid;place-items:center;background:#071c25ba;backdrop-filter:blur(5px);overflow:auto;padding:18px}.overlay[hidden]{display:none!important}
+.panel{width:min(545px,100%);background:var(--paper);color:var(--text);border:4px solid #e2b975;border-radius:17px;padding:22px 24px 23px;max-height:min(100%,580px);overflow-y:auto;text-align:center;box-shadow:0 12px 0 #132c36,0 22px 70px #0008;animation:panel-in .18s ease-out}.panel.wide{width:min(950px,100%)}@keyframes panel-in{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tag{display:inline-flex;align-items:center;gap:6px;background:#f3e4c8;border:1px solid #e4cfa9;border-radius:20px;padding:6px 13px;font-size:10px;font-weight:950;color:#98603f;letter-spacing:.12em;text-transform:uppercase}.panel h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(23px,3vw,34px);line-height:1.14;margin:13px auto 9px;color:#143943;letter-spacing:-.03em}.panel p{color:#586e74;font-size:13px;line-height:1.65;margin:8px auto 13px}.panel p strong{color:var(--text)}
+.btn-row{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:15px}.btn{border:none;border-bottom:4px solid #842d2c;border-radius:9px;padding:10px 17px;background:var(--red);color:#fff;font-size:13px;font-weight:950;letter-spacing:.01em;box-shadow:0 3px 0 #ddcba9;transition:.12s}.btn:hover:not(:disabled){filter:brightness(1.06);transform:translateY(-1px)}.btn.secondary{background:#f2e9d5;border:2px solid #d6c59f;border-bottom-width:4px;color:#644d2b;box-shadow:none}.btn.teal{background:#26806d;border-bottom-color:#145648}.btn.dark{background:#234753;border-bottom-color:#132c35}.btn.sm{padding:8px 11px;font-size:12px}.btn:disabled{filter:grayscale(.6)}
+.banner-art{font-size:37px;letter-spacing:.09em;margin:8px auto 3px}.howto{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px 0}.howto span{background:#eee6d6;border:1px solid #d9ceb9;color:#526466;padding:7px 9px;border-radius:7px;font-size:11px;font-weight:850}.subtext{font-size:12px!important;color:#887e6f!important}
+.level-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;text-align:left;margin-top:16px}.level-tile{min-height:116px;border:2px solid #ddcfb4;background:#fffaf0;border-radius:12px;padding:12px;text-align:left;color:#203d43;transition:.14s;position:relative}.level-tile:hover:not(:disabled){transform:translateY(-2px);border-color:#bc9c62;background:#fff5db}.level-tile.locked{background:#eae5da;color:#95958e;border-color:#d3cec4}.tile-top{display:flex;justify-content:space-between;align-items:center;font-size:25px}.tile-no{font:900 10px ui-monospace,monospace;color:#9d7761;letter-spacing:.06em}.level-tile strong{display:block;font-size:13px;line-height:1.3;margin:8px 0 4px}.level-tile small{font-size:11px;color:#7a8281}.level-tile .stars{display:block;color:#cd9136;font-size:14px;margin-top:8px;letter-spacing:2px}
+.shop-layout{display:grid;grid-template-columns:230px 1fr;gap:18px;text-align:left;margin-top:10px}.showcase{background:linear-gradient(#ebede1,#d0e3da);border:2px solid #cfceae;border-radius:13px;padding:13px;text-align:center;align-self:start}.showcase canvas{width:170px;height:190px;image-rendering:pixelated}.showcase strong{font-size:12px;display:block;margin:6px auto}.showcase small{font-size:10px;color:#697777;line-height:1.5}.wardrobe{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.skin{border:2px solid #e2d5c0;background:#fffaf1;border-radius:11px;padding:11px;text-align:left;color:#2b4149}.skin.owned{border-color:#83b7a5}.skin.chosen{border-color:#b67f31;background:#fff0ca}.skin-head{display:flex;justify-content:space-between;align-items:center;gap:6px}.swatch{width:24px;height:24px;border:3px solid #ffffff;border-radius:6px;box-shadow:0 0 0 1px #c7baa1;flex-shrink:0}.skin strong{display:block;font-size:12px;margin:7px 0 5px}.skin small{font-size:10px;color:#758080;line-height:1.45;display:block}.skin .price{color:#93532e;font-weight:950;display:block;margin-top:7px;font-size:12px}.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}.pin{background:#fcf4e3;border:1px solid #d8c7a4;color:#644c2d;padding:7px 9px;border-radius:8px;font-size:11px;font-weight:850}.pin.active{border-color:#d7a34a;background:#f6df9a}.pin:disabled{opacity:.48}
+.option-grid{display:grid;gap:8px;text-align:left;margin:14px 0}.answer-btn{display:flex;align-items:center;gap:11px;border:2px solid #dcd2c1;background:#fff;border-radius:9px;min-height:44px;padding:9px 11px;text-align:left;color:#213a43;font-size:13px;font-weight:780;line-height:1.4}.answer-btn:hover:not(:disabled){border-color:#c69d58;background:#fef4de}.answer-btn .key{width:29px;height:29px;display:grid;place-items:center;border-radius:7px;background:#efe8da;border:1px solid #dccbb0;font:900 13px ui-monospace,monospace;flex-shrink:0}.answer-btn.right{background:#e0f3e9;border-color:#319476}.answer-btn.wrong{background:#fae3e0;border-color:#cb5b54}.answer-btn.right .key{background:#32947a;color:#fff}.answer-btn.wrong .key{background:#bb5650;color:#fff}.explain{background:#e7f0e6;border-left:4px solid #499378;border-radius:8px;padding:12px;color:#23574b;text-align:left;font-size:13px;line-height:1.6;margin-top:12px}.explain.bad{background:#fff0e6;border-color:#d88a55;color:#814e35}
+.reward-box{background:linear-gradient(135deg,#f9e7bd,#fffbeb);border:2px solid #e8c27f;border-radius:12px;padding:13px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.reward-box strong{font-size:18px;color:#a15b2d;display:block}.reward-box small{font-size:10px;color:#7b6955}.mistakes{font-size:12px;color:#906e48}
+.notebook{display:grid;gap:9px;text-align:left;max-height:350px;overflow:auto;margin-top:14px}.note{background:#fff9ed;border:1px solid #e1d2b6;border-radius:10px;padding:10px}.note strong{display:block;font-size:12px;color:#aa5141}.note p{margin:4px 0 0;font-size:12px;line-height:1.55}
+.guide-bottom{background:#fffaf0;border-top:2px solid #e4d8be;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 17px;flex-wrap:wrap;color:#65747a;font-size:11px}.guide-bottom b{color:#244c55}.guide-buttons{display:flex;gap:7px}.flat-btn{border:1px solid #c9c9bf;border-radius:8px;background:#e9e7db;color:#344b53;padding:7px 10px;font-size:11px;font-weight:850}.flat-btn:hover{background:#dcd8c8}
+.mobile-pad{display:none;justify-content:space-between;gap:10px;margin-top:16px;touch-action:none}.dpad{display:flex;gap:9px}.touch{user-select:none;-webkit-user-select:none;touch-action:none;width:65px;height:57px;border-radius:13px;background:#f5d9a3;border:3px solid #eab86d;border-bottom-width:6px;color:#664827;font-size:23px;font-weight:1000}.touch.jump{width:117px;background:#c5564b;border-color:#a74540;color:#fff;font-size:16px}.touch.pressed{transform:translateY(3px);border-bottom-width:3px}
+.foot{display:flex;justify-content:space-between;gap:18px;padding:20px 2px;color:#b9d2d4;font-size:11px;line-height:1.6}.foot strong{color:#ffe2a2}
+@media(max-width:950px){.level-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-meta{display:none}.hud-stat{min-width:68px}.site-top{align-items:flex-start;padding-top:12px;padding-bottom:12px}.brand-title{font-size:12px}}
+@media(max-width:700px){.wrap{width:calc(100% - 16px)}.site-top{min-height:66px}.brand-symbol{width:37px;height:37px;font-size:20px}.brand-title{font-size:11px}.brand small{font-size:9px}.nav-actions{gap:5px}.nav-btn{font-size:11px;padding:8px}.balance{padding:8px;font-size:11px}.hero{padding:4px 0 14px}.hero p{font-size:11px}h1{font-size:31px}.frame{border-width:3px;border-radius:13px}.hud{padding:8px 9px;gap:7px;min-height:63px}.hud-icon{width:37px;height:37px;font-size:21px}.hud-copy strong{font-size:12px}.hud-kicker{font-size:9px}.hud-stat{min-width:51px;padding:0 3px}.hud-stat small{font-size:8px}.hud-stat strong{font-size:12px}.hud-stat .lives{font-size:11px}.meter{padding:7px 8px;gap:3px}.meter-label{font-size:9px}.meter-dots{gap:3px}.meter-right{font-size:10px}.viewport{min-height:280px;aspect-ratio:1.45}.scene-label{font-size:9px;left:7px;top:8px}.overlay{padding:8px}.panel{padding:16px 13px;max-height:calc(100dvh - 24px);border-width:3px}.overlay{position:fixed;inset:0;z-index:99;align-items:center}.panel.wide{width:min(650px,100%)}.panel h2{font-size:24px}.panel p{font-size:12px}.level-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.level-tile{min-height:99px;padding:10px}.level-tile strong{font-size:11px}.level-tile .stars{font-size:12px}.shop-layout{grid-template-columns:1fr;gap:12px}.showcase{display:flex;align-items:center;justify-content:center;gap:10px;padding:7px}.showcase canvas{width:85px;height:95px}.wardrobe{gap:7px}.skin{padding:8px}.skin small{font-size:9px}.guide-bottom{padding:8px;font-size:10px}.mobile-pad{display:flex}.foot{flex-direction:column;gap:7px}.answer-btn{font-size:12px;min-height:42px}.reward-box{gap:3px;padding:10px}.reward-box strong{font-size:15px}}
+@media(max-width:410px){.brand small{display:none}.brand-title{font-size:10px}.nav-btn{padding:7px;font-size:10px}.balance{padding:6px}.hud-copy strong{font-size:11px}.hud-stat:nth-last-child(2){display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header class="site-top">
+  <div class="brand"><div class="brand-symbol">★</div><div><div class="brand-title">HÀNH TRÌNH LỊCH SỬ ĐẢNG</div><small>VNR • TRÒ CHƠI HỌC TẬP</small></div></div>
+  <nav class="nav-actions" aria-label="Điều hướng trò chơi"><div class="balance">🪙 <span id="totalCoins">0</span></div><div class="balance">🏅 <span id="totalBadges">0/7</span></div><button class="nav-btn" id="btnMap">🗺️ Chọn màn</button><button class="nav-btn" id="btnShop">👕 Tủ đồ</button><button class="nav-btn" id="btnSound">🔊</button></nav>
+ </header>
+ <div class="hero"><div><div class="eyebrow">7 chủ đề • 70 cổng câu hỏi • 10 câu mỗi màn</div><h1>Đi qua lịch sử. Mở khóa tương lai.</h1><p>Vượt chướng ngại vật, tìm hiểu lịch sử Đảng từ 1911 đến 2021, tích xu – sưu tầm huy hiệu – mở khóa trang phục.</p></div><div class="hero-meta">1911 — 2021<br>✦ Tìm hiểu • Ghi nhớ • Vận dụng</div></div>
+ <main class="frame">
+  <div class="hud"><div class="hud-icon" id="hudIcon">🚢</div><div class="hud-copy"><span class="hud-kicker" id="hudKicker">CHỌN CHẶNG ĐƯỜNG</span><strong id="hudTitle">Hành trình 7 chủ đề VNR</strong></div><div class="hud-stat"><small>Câu hỏi</small><strong id="hudQuestions">00/10</strong></div><div class="hud-stat"><small>Tim</small><strong id="hudHearts" class="lives">♥♥♥♥♥</strong></div><div class="hud-stat"><small>Xu màn</small><strong id="hudStageCoins">+0</strong></div><div class="hud-stat"><small>Thời gian</small><strong id="hudTime">00:00</strong></div></div>
+  <div class="meter"><span class="meter-label">Tiến độ</span><div class="meter-dots" id="meterDots" aria-label="Tiến độ 10 câu"></div><span class="meter-right" id="meterText">0 / 10</span></div>
+  <section class="viewport" id="viewport" aria-label="Màn chơi đi cảnh"><canvas id="gameCanvas" width="1120" height="550"></canvas><div class="scene-label" id="sceneLabel">🏁 Chọn màn để bắt đầu</div><div class="scene-toast" id="toast" hidden></div><div class="overlay" id="overlay"><div class="panel" id="panel" role="dialog" aria-modal="true"></div></div></section>
+  <div class="guide-bottom"><span><b>Di chuyển:</b> ← → / A D &nbsp; <b>Nhảy:</b> ↑ / Space &nbsp; <b>Trả lời:</b> phím 1–4 &nbsp; <b>Tạm dừng:</b> P</span><div class="guide-buttons"><button class="flat-btn" id="btnNotes">📖 Sổ tay</button><button class="flat-btn" id="btnPause">⏸ Tạm dừng</button></div></div>
+ </main>
+ <div class="mobile-pad"><div class="dpad"><button class="touch" id="touchLeft" aria-label="Đi trái">◀</button><button class="touch" id="touchRight" aria-label="Đi phải">▶</button></div><button class="touch jump" id="touchJump">▲ NHẢY</button></div>
+ <footer class="foot"><span><strong>Sản phẩm sáng tạo môn Lịch sử Đảng (VNR).</strong> Nhân vật Bác Hồ pixel là hình tượng dẫn chuyện biểu trưng xuyên suốt các thời kỳ, không hàm ý Người hiện diện ở các sự kiện sau năm 1969.</span><span>Biên soạn câu hỏi theo các chủ đề của Giáo trình Lịch sử Đảng Cộng sản Việt Nam (Bộ GD&ĐT, 2021). Hoạt động offline • Tự lưu tiến độ.</span></footer>
+</div>
+<script>
+(()=>{'use strict';
+const LEVELS=[
+  {
+    "id": "hat-giong",
+    "short": "1911–1930",
+    "name": "Hạt giống cách mạng",
+    "subtitle": "Từ hành trình tìm đường cứu nước đến sự ra đời của Đảng",
+    "icon": "🚢",
+    "badge": "Người tìm đường",
+    "palette": [
+      "#96d1ce",
+      "#e5e4b7",
+      "#518c85",
+      "#245e63"
+    ],
+    "goal": "Đảng ra đời",
+    "overview": "Hành trình chuẩn bị về tư tưởng, chính trị và tổ chức dẫn tới thành lập Đảng Cộng sản Việt Nam.",
+    "questions": [
+      {
+        "q": "Nguyễn Tất Thành rời Tổ quốc ra đi tìm đường cứu nước tại đâu?",
+        "options": [
+          "Bến Nhà Rồng, Sài Gòn",
+          "Bến Bạch Đằng, Hà Nội",
+          "Cảng Hải Phòng",
+          "Cửa biển Thuận An"
+        ],
+        "answer": 0,
+        "why": "Ngày 5/6/1911, Nguyễn Tất Thành rời Bến Nhà Rồng trên tàu Amiral Latouche-Tréville."
+      },
+      {
+        "q": "Nguyễn Tất Thành ra đi tìm đường cứu nước vào năm nào?",
+        "options": [
+          "1905",
+          "1911",
+          "1919",
+          "1925"
+        ],
+        "answer": 1,
+        "why": "Ngày 5/6/1911 mở đầu hành trình tìm đường cứu nước của Người."
+      },
+      {
+        "q": "Năm 1920, Nguyễn Ái Quốc tiếp cận văn kiện nào của V.I. Lênin?",
+        "options": [
+          "Tuyên ngôn Đảng Cộng sản",
+          "Luận cương về ruộng đất",
+          "Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa",
+          "Nhà nước và cách mạng"
+        ],
+        "answer": 2,
+        "why": "Tháng 7/1920, Nguyễn Ái Quốc đọc sơ thảo luận cương về vấn đề dân tộc và thuộc địa của Lênin."
+      },
+      {
+        "q": "Tại Đại hội Tours (12/1920), Nguyễn Ái Quốc đã lựa chọn gì?",
+        "options": [
+          "Tham gia thành lập Đảng Cộng sản Pháp",
+          "Thành lập Mặt trận Việt Minh",
+          "Gia nhập Quốc dân Đảng",
+          "Thành lập Đảng Cộng sản Việt Nam"
+        ],
+        "answer": 0,
+        "why": "Nguyễn Ái Quốc tán thành Quốc tế Cộng sản, góp phần thành lập Đảng Cộng sản Pháp, đánh dấu bước chuyển đến lập trường cộng sản."
+      },
+      {
+        "q": "Hội Việt Nam Cách mạng Thanh niên được thành lập khi nào?",
+        "options": [
+          "Tháng 6/1923",
+          "Tháng 6/1925",
+          "Tháng 10/1930",
+          "Tháng 5/1941"
+        ],
+        "answer": 1,
+        "why": "Nguyễn Ái Quốc thành lập Hội Việt Nam Cách mạng Thanh niên tại Quảng Châu tháng 6/1925."
+      },
+      {
+        "q": "Số đầu tiên của báo Thanh Niên xuất bản ngày nào?",
+        "options": [
+          "3/2/1930",
+          "19/5/1941",
+          "21/6/1925",
+          "2/9/1945"
+        ],
+        "answer": 2,
+        "why": "Báo Thanh Niên xuất bản số đầu ngày 21/6/1925, góp phần truyền bá tư tưởng cách mạng."
+      },
+      {
+        "q": "Tác phẩm Đường Kách mệnh được xuất bản năm nào?",
+        "options": [
+          "1911",
+          "1920",
+          "1935",
+          "1927"
+        ],
+        "answer": 3,
+        "why": "Đường Kách mệnh (1927) tập hợp các bài giảng của Nguyễn Ái Quốc, chuẩn bị lý luận cho sự thành lập Đảng."
+      },
+      {
+        "q": "Tổ chức cộng sản đầu tiên ra đời ở Việt Nam là tổ chức nào?",
+        "options": [
+          "Đông Dương Cộng sản Đảng",
+          "An Nam Cộng sản Đảng",
+          "Đông Dương Cộng sản Liên đoàn",
+          "Việt Nam Quốc dân Đảng"
+        ],
+        "answer": 0,
+        "why": "Đông Dương Cộng sản Đảng thành lập tháng 6/1929."
+      },
+      {
+        "q": "Hội nghị hợp nhất các tổ chức cộng sản đầu năm 1930 do ai chủ trì?",
+        "options": [
+          "Trần Phú",
+          "Nguyễn Ái Quốc",
+          "Lê Hồng Phong",
+          "Nguyễn Văn Cừ"
+        ],
+        "answer": 1,
+        "why": "Nguyễn Ái Quốc chủ trì Hội nghị hợp nhất tại Hương Cảng, dẫn tới sự ra đời của Đảng Cộng sản Việt Nam."
+      },
+      {
+        "q": "Cương lĩnh chính trị đầu tiên của Đảng đặt nhiệm vụ nào lên hàng đầu?",
+        "options": [
+          "Chỉ phát triển công nghiệp nặng",
+          "Đấu tranh đòi các quyền dân sinh trước mắt",
+          "Giải phóng dân tộc, chống đế quốc",
+          "Ưu tiên công nghiệp hóa"
+        ],
+        "answer": 2,
+        "why": "Cương lĩnh đầu tiên nhấn mạnh nhiệm vụ chống đế quốc, giải phóng dân tộc và chủ trương tập hợp lực lượng yêu nước rộng rãi."
+      }
+    ]
+  },
+  {
+    "id": "thu-lua",
+    "short": "1930–1939",
+    "name": "Thử lửa phong trào",
+    "subtitle": "Xô viết Nghệ – Tĩnh và phong trào dân chủ",
+    "icon": "✊",
+    "badge": "Ngọn lửa đấu tranh",
+    "palette": [
+      "#c8d4bd",
+      "#efe7bf",
+      "#89a174",
+      "#566b50"
+    ],
+    "goal": "Trưởng thành trong đấu tranh",
+    "overview": "Củng cố vai trò lãnh đạo, rèn luyện quần chúng qua cao trào 1930–1931 và phong trào dân chủ 1936–1939.",
+    "questions": [
+      {
+        "q": "Phong trào cách mạng 1930–1931 phát triển mạnh nhất ở đâu?",
+        "options": [
+          "Nghệ An và Hà Tĩnh",
+          "Đà Nẵng và Huế",
+          "Sài Gòn và Gia Định",
+          "Hà Nội và Hải Phòng"
+        ],
+        "answer": 0,
+        "why": "Nghệ An và Hà Tĩnh là địa bàn tiêu biểu, xuất hiện các hình thức chính quyền Xô viết."
+      },
+      {
+        "q": "Ngày 1/5/1930 gắn với sự kiện nào trong phong trào cách mạng?",
+        "options": [
+          "Ngày Quốc khánh",
+          "Kỷ niệm Ngày Quốc tế Lao động",
+          "Ngày thành lập Mặt trận Việt Minh",
+          "Ngày Tổng khởi nghĩa"
+        ],
+        "answer": 1,
+        "why": "Ngày Quốc tế Lao động 1/5/1930 là dấu mốc quan trọng trong phong trào công nhân và quần chúng."
+      },
+      {
+        "q": "Ai khởi thảo Luận cương chính trị tháng 10/1930?",
+        "options": [
+          "Nguyễn Ái Quốc",
+          "Nguyễn Văn Cừ",
+          "Trần Phú",
+          "Võ Nguyên Giáp"
+        ],
+        "answer": 2,
+        "why": "Luận cương chính trị tháng 10/1930 do Trần Phú khởi thảo."
+      },
+      {
+        "q": "Chính quyền Xô viết Nghệ – Tĩnh xuất hiện rõ nét từ thời điểm nào?",
+        "options": [
+          "Tháng 9/1930",
+          "Tháng 2/1930",
+          "Tháng 5/1941",
+          "Tháng 8/1945"
+        ],
+        "answer": 0,
+        "why": "Từ tháng 9/1930, các hình thức chính quyền Xô viết được hình thành ở một số địa phương Nghệ – Tĩnh."
+      },
+      {
+        "q": "Đại hội đại biểu lần thứ I của Đảng họp vào năm nào?",
+        "options": [
+          "1930",
+          "1935",
+          "1941",
+          "1951"
+        ],
+        "answer": 1,
+        "why": "Đại hội lần thứ I của Đảng họp tháng 3/1935 tại Ma Cao (Trung Quốc)."
+      },
+      {
+        "q": "Đại hội VII của Quốc tế Cộng sản năm 1935 nhấn mạnh nhiệm vụ gì?",
+        "options": [
+          "Đẩy mạnh chiến tranh thế giới",
+          "Giải thể mọi mặt trận",
+          "Chống chủ nghĩa phát xít và nguy cơ chiến tranh",
+          "Chỉ tiến hành đấu tranh vũ trang"
+        ],
+        "answer": 2,
+        "why": "Đại hội VII Quốc tế Cộng sản (1935) chủ trương tập hợp lực lượng chống phát xít, chống chiến tranh."
+      },
+      {
+        "q": "Khẩu hiệu tiêu biểu của phong trào dân chủ 1936–1939 là gì?",
+        "options": [
+          "Tự do, dân chủ, cơm áo, hòa bình",
+          "Chỉ tập trung cải cách ruộng đất",
+          "Thực hiện tổng khởi nghĩa ngay",
+          "Phát triển công nghiệp nặng"
+        ],
+        "answer": 0,
+        "why": "Phong trào 1936–1939 tập trung các yêu sách dân sinh, dân chủ và hòa bình."
+      },
+      {
+        "q": "Đối tượng đấu tranh trực tiếp trước mắt trong phong trào dân chủ 1936–1939 là ai?",
+        "options": [
+          "Tất cả tư sản Việt Nam",
+          "Mọi địa chủ yêu nước",
+          "Toàn bộ người Pháp ở Đông Dương",
+          "Bọn phản động thuộc địa và tay sai"
+        ],
+        "answer": 3,
+        "why": "Đảng phân biệt lực lượng phản động thuộc địa với những lực lượng có thể tranh thủ để mở rộng mặt trận dân chủ."
+      },
+      {
+        "q": "Hình thức đấu tranh nổi bật giai đoạn 1936–1939 là gì?",
+        "options": [
+          "Chỉ đấu tranh bí mật",
+          "Kết hợp công khai, nửa công khai, hợp pháp và các hình thức khác",
+          "Chỉ đấu tranh vũ trang",
+          "Không tổ chức biểu tình"
+        ],
+        "answer": 1,
+        "why": "Đảng linh hoạt kết hợp hình thức công khai, nửa công khai, hợp pháp và các hình thức đấu tranh cần thiết."
+      },
+      {
+        "q": "Phong trào 1936–1939 đã chuẩn bị quan trọng nhất về mặt nào cho cách mạng?",
+        "options": [
+          "Máy bay chiến đấu",
+          "Nguồn thu từ dầu mỏ",
+          "Lực lượng quần chúng và kinh nghiệm tổ chức mặt trận",
+          "Hệ thống nhà máy quốc phòng"
+        ],
+        "answer": 2,
+        "why": "Phong trào giúp giác ngộ quần chúng, mở rộng đoàn kết và tích lũy kinh nghiệm vận động chính trị."
+      }
+    ]
+  },
+  {
+    "id": "cach-mang-thang-tam",
+    "short": "1939–1945",
+    "name": "Mùa thu độc lập",
+    "subtitle": "Chuyển hướng chiến lược và Cách mạng Tháng Tám",
+    "icon": "🌿",
+    "badge": "Ngôi sao độc lập",
+    "palette": [
+      "#8ec5be",
+      "#e5e8b5",
+      "#508d78",
+      "#2d5e5b"
+    ],
+    "goal": "Tuyên ngôn Độc lập",
+    "overview": "Đặt giải phóng dân tộc lên hàng đầu, chuẩn bị lực lượng và chớp thời cơ tổng khởi nghĩa.",
+    "questions": [
+      {
+        "q": "Hội nghị nào bắt đầu chuyển hướng chỉ đạo chiến lược, đặt giải phóng dân tộc lên hàng đầu?",
+        "options": [
+          "Trung ương 6, tháng 11/1939",
+          "Trung ương 8, tháng 5/1941",
+          "Đại hội II năm 1951",
+          "Đại hội VI năm 1986"
+        ],
+        "answer": 0,
+        "why": "Hội nghị Trung ương 6 (11/1939) bắt đầu chuyển hướng chỉ đạo chiến lược."
+      },
+      {
+        "q": "Hội nghị nào hoàn chỉnh sự chuyển hướng chiến lược giai đoạn 1939–1941?",
+        "options": [
+          "Trung ương 7 (11/1940)",
+          "Trung ương 8 (5/1941)",
+          "Trung ương 21 (7/1973)",
+          "Đại hội V (1982)"
+        ],
+        "answer": 1,
+        "why": "Hội nghị Trung ương 8 do Nguyễn Ái Quốc chủ trì tại Pác Bó, Cao Bằng, hoàn chỉnh chủ trương giải phóng dân tộc."
+      },
+      {
+        "q": "Mặt trận Việt Nam Độc lập Đồng minh (Việt Minh) được thành lập vào ngày nào?",
+        "options": [
+          "3/2/1930",
+          "22/12/1944",
+          "19/5/1941",
+          "2/9/1945"
+        ],
+        "answer": 2,
+        "why": "Mặt trận Việt Minh được thành lập ngày 19/5/1941 nhằm tập hợp lực lượng yêu nước."
+      },
+      {
+        "q": "Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập ngày nào?",
+        "options": [
+          "22/12/1944",
+          "19/8/1945",
+          "7/5/1954",
+          "25/4/1976"
+        ],
+        "answer": 0,
+        "why": "Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập ngày 22/12/1944."
+      },
+      {
+        "q": "Nhật đảo chính Pháp ở Đông Dương vào ngày nào?",
+        "options": [
+          "12/3/1945",
+          "9/3/1945",
+          "15/8/1945",
+          "19/8/1945"
+        ],
+        "answer": 1,
+        "why": "Ngày 9/3/1945, Nhật đảo chính Pháp, tạo khủng hoảng chính trị ở Đông Dương."
+      },
+      {
+        "q": "Chỉ thị “Nhật – Pháp bắn nhau và hành động của chúng ta” ban hành ngày nào?",
+        "options": [
+          "9/3/1945",
+          "2/9/1945",
+          "12/3/1945",
+          "27/1/1973"
+        ],
+        "answer": 2,
+        "why": "Ban Thường vụ Trung ương Đảng ra chỉ thị ngày 12/3/1945, phát động cao trào kháng Nhật cứu nước."
+      },
+      {
+        "q": "Sự kiện quốc tế tạo thời cơ trực tiếp thuận lợi cho Tổng khởi nghĩa tháng Tám 1945?",
+        "options": [
+          "Nhật Bản tuyên bố đầu hàng Đồng minh",
+          "Chiến tranh thế giới thứ hai vừa bùng nổ",
+          "Hiệp định Paris được ký",
+          "Đại hội VII Quốc tế Cộng sản"
+        ],
+        "answer": 0,
+        "why": "Nhật đầu hàng Đồng minh ngày 15/8/1945 làm chính quyền tay sai khủng hoảng và mở ra thời cơ đặc biệt."
+      },
+      {
+        "q": "Hội nghị toàn quốc của Đảng tại Tân Trào tháng 8/1945 quyết định điều gì?",
+        "options": [
+          "Thành lập ASEAN",
+          "Mở chiến dịch Điện Biên Phủ",
+          "Tiến hành cải cách giáo dục",
+          "Phát động Tổng khởi nghĩa giành chính quyền"
+        ],
+        "answer": 3,
+        "why": "Hội nghị toàn quốc của Đảng (13–15/8/1945) quyết định phát động Tổng khởi nghĩa."
+      },
+      {
+        "q": "Nhân dân Hà Nội giành chính quyền vào ngày nào?",
+        "options": [
+          "16/8/1945",
+          "19/8/1945",
+          "23/8/1945",
+          "25/8/1945"
+        ],
+        "answer": 1,
+        "why": "Ngày 19/8/1945, khởi nghĩa giành chính quyền ở Hà Nội thắng lợi."
+      },
+      {
+        "q": "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Ba Đình ngày nào?",
+        "options": [
+          "30/4/1975",
+          "6/1/1946",
+          "2/9/1945",
+          "19/12/1946"
+        ],
+        "answer": 2,
+        "why": "Ngày 2/9/1945, nước Việt Nam Dân chủ Cộng hòa ra đời."
+      }
+    ]
+  },
+  {
+    "id": "khang-chien-phap",
+    "short": "1945–1954",
+    "name": "Giữ nước – kháng chiến",
+    "subtitle": "Bảo vệ chính quyền và kháng chiến chống Pháp",
+    "icon": "🏔️",
+    "badge": "Vững bước kháng chiến",
+    "palette": [
+      "#95b8c6",
+      "#d9e0b8",
+      "#607e8d",
+      "#324e62"
+    ],
+    "goal": "Điện Biên Phủ – Genève",
+    "overview": "Vượt qua tình thế sau độc lập, vừa kháng chiến vừa kiến quốc và kết thúc cuộc kháng chiến chống Pháp.",
+    "questions": [
+      {
+        "q": "Sau Cách mạng Tháng Tám 1945, ba thứ “giặc” thường được nhắc đến là gì?",
+        "options": [
+          "Giặc đói, giặc dốt, giặc ngoại xâm",
+          "Giặc lụt, giặc hạn, giặc rét",
+          "Giặc nghèo, giặc dịch, giặc cháy",
+          "Giặc buôn lậu, giặc cướp, giặc lừa đảo"
+        ],
+        "answer": 0,
+        "why": "Chính quyền non trẻ phải đồng thời chống nạn đói, nạn mù chữ và nguy cơ ngoại xâm."
+      },
+      {
+        "q": "Chỉ thị “Kháng chiến kiến quốc” được ban hành ngày nào?",
+        "options": [
+          "2/9/1945",
+          "25/11/1945",
+          "6/3/1946",
+          "19/12/1946"
+        ],
+        "answer": 1,
+        "why": "Chỉ thị Kháng chiến kiến quốc ngày 25/11/1945 đề ra nhiệm vụ xây dựng và bảo vệ chính quyền."
+      },
+      {
+        "q": "Cuộc Tổng tuyển cử bầu Quốc hội đầu tiên của nước Việt Nam Dân chủ Cộng hòa diễn ra khi nào?",
+        "options": [
+          "19/8/1945",
+          "23/9/1945",
+          "6/1/1946",
+          "7/5/1954"
+        ],
+        "answer": 2,
+        "why": "Ngày 6/1/1946, nhân dân bầu Quốc hội khóa I, góp phần củng cố nhà nước mới."
+      },
+      {
+        "q": "Ngày 6/3/1946, Việt Nam và Pháp ký văn kiện nào?",
+        "options": [
+          "Hiệp định Sơ bộ",
+          "Hiệp định Genève",
+          "Hiệp định Paris",
+          "Hiệp ước Versailles"
+        ],
+        "answer": 0,
+        "why": "Hiệp định Sơ bộ 6/3/1946 phản ánh sách lược ngoại giao nhằm tránh đối đầu với nhiều kẻ thù cùng lúc."
+      },
+      {
+        "q": "Ngày 19/12/1946 gắn với sự kiện nào?",
+        "options": [
+          "Chiến dịch Biên giới",
+          "Toàn quốc kháng chiến bùng nổ",
+          "Chiến dịch Tây Nguyên",
+          "Đại hội II của Đảng"
+        ],
+        "answer": 1,
+        "why": "Ngày 19/12/1946 mở đầu cuộc kháng chiến toàn quốc chống thực dân Pháp."
+      },
+      {
+        "q": "Chiến thắng Việt Bắc thu – đông 1947 làm thất bại ý đồ nào của Pháp?",
+        "options": [
+          "Việt Nam hóa chiến tranh",
+          "Ấp chiến lược",
+          "Đánh nhanh, thắng nhanh",
+          "Đông Dương hóa chiến tranh"
+        ],
+        "answer": 2,
+        "why": "Thắng lợi Việt Bắc 1947 làm phá sản chiến lược đánh nhanh, thắng nhanh của thực dân Pháp."
+      },
+      {
+        "q": "Chiến dịch Biên giới thu – đông 1950 có ý nghĩa nổi bật nào?",
+        "options": [
+          "Khai thông biên giới Việt – Trung, mở rộng căn cứ và liên lạc quốc tế",
+          "Giải phóng Sài Gòn",
+          "Thành lập Đảng Cộng sản Việt Nam",
+          "Bắt đầu công cuộc Đổi mới"
+        ],
+        "answer": 0,
+        "why": "Chiến dịch Biên giới 1950 góp phần mở rộng căn cứ Việt Bắc, khai thông biên giới và nâng cao thế chủ động."
+      },
+      {
+        "q": "Tại Đại hội II tháng 2/1951, Đảng ra hoạt động công khai với tên gọi nào?",
+        "options": [
+          "Đảng Cộng sản Đông Dương",
+          "Đảng Lao động Việt Nam",
+          "Đảng Dân chủ Việt Nam",
+          "Đảng Cộng sản Pháp"
+        ],
+        "answer": 1,
+        "why": "Đại hội II (1951) quyết định đưa Đảng ra hoạt động công khai với tên Đảng Lao động Việt Nam."
+      },
+      {
+        "q": "Chiến dịch Điện Biên Phủ kết thúc thắng lợi ngày nào?",
+        "options": [
+          "21/7/1954",
+          "19/12/1946",
+          "7/5/1954",
+          "30/4/1975"
+        ],
+        "answer": 2,
+        "why": "Ngày 7/5/1954, tập đoàn cứ điểm Điện Biên Phủ thất thủ, tạo điều kiện quan trọng cho đàm phán Genève."
+      },
+      {
+        "q": "Hiệp định Genève về Đông Dương năm 1954 gắn với mốc ngày nào?",
+        "options": [
+          "21/7/1954",
+          "27/1/1973",
+          "2/9/1945",
+          "6/3/1946"
+        ],
+        "answer": 0,
+        "why": "Ngày 21/7/1954 gắn với các văn kiện và Tuyên bố cuối cùng của Hội nghị Genève về Đông Dương."
+      }
+    ]
+  },
+  {
+    "id": "thong-nhat",
+    "short": "1954–1975",
+    "name": "Tiến tới thống nhất",
+    "subtitle": "Kháng chiến chống Mỹ, cứu nước",
+    "icon": "🇻🇳",
+    "badge": "Ngôi sao thống nhất",
+    "palette": [
+      "#97bb9f",
+      "#ebe3a8",
+      "#63956a",
+      "#35674a"
+    ],
+    "goal": "Thống nhất 30/4",
+    "overview": "Thực hiện hai nhiệm vụ chiến lược và lần lượt đánh bại các chiến lược chiến tranh của Mỹ.",
+    "questions": [
+      {
+        "q": "Nghị quyết Trung ương 15 (1959) xác định con đường phát triển của cách mạng miền Nam là gì?",
+        "options": [
+          "Khởi nghĩa giành chính quyền bằng bạo lực cách mạng",
+          "Chỉ đấu tranh nghị trường",
+          "Chỉ phát triển công nghiệp",
+          "Từ bỏ mục tiêu thống nhất"
+        ],
+        "answer": 0,
+        "why": "Nghị quyết Trung ương 15 (1/1959) mở đường cho phong trào Đồng khởi."
+      },
+      {
+        "q": "Phong trào Đồng khởi 1960 tiêu biểu diễn ra ở tỉnh nào?",
+        "options": [
+          "Nghệ An",
+          "Bến Tre",
+          "Bắc Ninh",
+          "Thái Bình"
+        ],
+        "answer": 1,
+        "why": "Đồng khởi Bến Tre (17/1/1960) góp phần đưa cách mạng miền Nam từ thế giữ gìn lực lượng sang tiến công."
+      },
+      {
+        "q": "Đại hội III của Đảng (9/1960) xác định cách mạng miền Nam có vai trò gì?",
+        "options": [
+          "Quyết định nhất đối với toàn bộ cách mạng Việt Nam",
+          "Không có vai trò chiến lược",
+          "Quyết định trực tiếp đối với giải phóng miền Nam",
+          "Chỉ phát triển kinh tế"
+        ],
+        "answer": 2,
+        "why": "Đại hội III phân biệt vai trò quyết định nhất của miền Bắc đối với toàn bộ cách mạng và quyết định trực tiếp của miền Nam đối với giải phóng miền Nam."
+      },
+      {
+        "q": "Chiến lược “Chiến tranh đặc biệt” của Mỹ chủ yếu sử dụng lực lượng nào?",
+        "options": [
+          "Quân đội Sài Gòn, được cố vấn và phương tiện Mỹ hỗ trợ",
+          "Quân chiến đấu Mỹ là lực lượng chủ yếu",
+          "Quân đội Nhật",
+          "Quân đội Pháp"
+        ],
+        "answer": 0,
+        "why": "Trong chiến tranh đặc biệt (1961–1965), quân đội Sài Gòn giữ vai trò chủ yếu dưới sự chỉ huy, hỗ trợ của Mỹ."
+      },
+      {
+        "q": "Thủ đoạn được coi là “xương sống” của chiến tranh đặc biệt là gì?",
+        "options": [
+          "Chiến dịch Điện Biên Phủ",
+          "Ấp chiến lược",
+          "Hiệp định Paris",
+          "Tổng tuyển cử"
+        ],
+        "answer": 1,
+        "why": "Hệ thống ấp chiến lược nhằm kiểm soát nông thôn và tách cách mạng khỏi quần chúng."
+      },
+      {
+        "q": "Điểm khác biệt nổi bật của “Chiến tranh cục bộ” (1965–1968) là gì?",
+        "options": [
+          "Mỹ rút hoàn toàn quân chiến đấu",
+          "Không sử dụng không quân",
+          "Quân chiến đấu Mỹ trực tiếp giữ vai trò chủ yếu",
+          "Pháp trở lại chỉ huy chiến tranh"
+        ],
+        "answer": 2,
+        "why": "Chiến tranh cục bộ đưa quân chiến đấu Mỹ trực tiếp tham chiến quy mô lớn ở miền Nam."
+      },
+      {
+        "q": "Cuộc Tổng tiến công và nổi dậy Tết Mậu Thân diễn ra năm nào?",
+        "options": [
+          "1968",
+          "1960",
+          "1973",
+          "1975"
+        ],
+        "answer": 0,
+        "why": "Tết Mậu Thân 1968 tạo bước ngoặt chiến lược và tác động mạnh tới chính sách chiến tranh của Mỹ."
+      },
+      {
+        "q": "Chiến lược “Việt Nam hóa chiến tranh” gắn với Tổng thống Mỹ nào?",
+        "options": [
+          "John F. Kennedy",
+          "Richard Nixon",
+          "Franklin D. Roosevelt",
+          "Harry S. Truman"
+        ],
+        "answer": 1,
+        "why": "Nixon thực hiện Việt Nam hóa chiến tranh, rút dần quân Mỹ và tăng vai trò quân đội Sài Gòn."
+      },
+      {
+        "q": "Hiệp định Paris về Việt Nam được ký ngày nào?",
+        "options": [
+          "21/7/1954",
+          "30/4/1975",
+          "27/1/1973",
+          "19/12/1946"
+        ],
+        "answer": 2,
+        "why": "Hiệp định Paris 27/1/1973 buộc Mỹ cam kết rút quân, tạo điều kiện thuận lợi cho giải phóng miền Nam."
+      },
+      {
+        "q": "Chiến dịch Hồ Chí Minh toàn thắng vào ngày nào?",
+        "options": [
+          "30/4/1975",
+          "2/9/1945",
+          "7/5/1954",
+          "6/1/1946"
+        ],
+        "answer": 0,
+        "why": "Ngày 30/4/1975, Sài Gòn được giải phóng, kết thúc thắng lợi cuộc kháng chiến chống Mỹ."
+      }
+    ]
+  },
+  {
+    "id": "trang-moi",
+    "short": "1975–1986",
+    "name": "Xây dựng và tìm đường đổi mới",
+    "subtitle": "Thống nhất nhà nước, xây dựng CNXH và đổi mới tư duy",
+    "icon": "🌾",
+    "badge": "Hạt mầm đổi mới",
+    "palette": [
+      "#b0cfba",
+      "#ebddb0",
+      "#8caf8b",
+      "#5e8061"
+    ],
+    "goal": "Đại hội VI – Đổi mới",
+    "overview": "Đất nước thống nhất, đối mặt khó khăn và từng bước điều chỉnh tư duy quản lý kinh tế.",
+    "questions": [
+      {
+        "q": "Ngày 25/4/1976, cả nước tổ chức sự kiện chính trị quan trọng nào?",
+        "options": [
+          "Tổng tuyển cử bầu Quốc hội chung",
+          "Đại hội VI của Đảng",
+          "Ký Hiệp định Genève",
+          "Tuyên ngôn Độc lập"
+        ],
+        "answer": 0,
+        "why": "Tổng tuyển cử ngày 25/4/1976 bầu Quốc hội chung của nước Việt Nam thống nhất."
+      },
+      {
+        "q": "Quốc hội khóa VI năm 1976 quyết định tên nước thống nhất là gì?",
+        "options": [
+          "Việt Nam Dân chủ Cộng hòa",
+          "Cộng hòa xã hội chủ nghĩa Việt Nam",
+          "Liên bang Việt Nam",
+          "Cộng hòa miền Nam Việt Nam"
+        ],
+        "answer": 1,
+        "why": "Quốc hội khóa VI tại kỳ họp thứ nhất năm 1976 quyết định tên nước Cộng hòa xã hội chủ nghĩa Việt Nam."
+      },
+      {
+        "q": "Đại hội đại biểu toàn quốc lần thứ IV của Đảng diễn ra vào thời gian nào?",
+        "options": [
+          "3/1982",
+          "12/1986",
+          "12/1976",
+          "9/1960"
+        ],
+        "answer": 2,
+        "why": "Đại hội IV họp tháng 12/1976, đề ra đường lối xây dựng chủ nghĩa xã hội trong cả nước."
+      },
+      {
+        "q": "Kế hoạch Nhà nước 5 năm đầu tiên sau thống nhất là giai đoạn nào?",
+        "options": [
+          "1976–1980",
+          "1981–1985",
+          "1991–1995",
+          "2001–2005"
+        ],
+        "answer": 0,
+        "why": "Kế hoạch 5 năm 1976–1980 đặt mục tiêu khôi phục, cải tạo và phát triển kinh tế sau chiến tranh."
+      },
+      {
+        "q": "Cuộc chiến đấu bảo vệ biên giới phía Bắc diễn ra vào năm nào?",
+        "options": [
+          "1975",
+          "1979",
+          "1986",
+          "1991"
+        ],
+        "answer": 1,
+        "why": "Tháng 2/1979, chiến tranh biên giới phía Bắc bùng nổ; quân và dân Việt Nam chiến đấu bảo vệ chủ quyền lãnh thổ."
+      },
+      {
+        "q": "Chỉ thị 100-CT/TW tháng 1/1981 gắn với chủ trương nào?",
+        "options": [
+          "Đại hội VI",
+          "Gia nhập ASEAN",
+          "Khoán sản phẩm trong hợp tác xã nông nghiệp",
+          "Bầu Quốc hội chung"
+        ],
+        "answer": 2,
+        "why": "Khoán 100 giao khoán sản phẩm đến nhóm và người lao động trong hợp tác xã nông nghiệp."
+      },
+      {
+        "q": "Đại hội đại biểu toàn quốc lần thứ V diễn ra khi nào?",
+        "options": [
+          "Tháng 3/1982",
+          "Tháng 9/1960",
+          "Tháng 12/1976",
+          "Tháng 1/1991"
+        ],
+        "answer": 0,
+        "why": "Đại hội V họp tháng 3/1982 trong bối cảnh kinh tế – xã hội còn nhiều khó khăn."
+      },
+      {
+        "q": "Đại hội V (1982) xác định ngành nào là “mặt trận hàng đầu”?",
+        "options": [
+          "Công nghiệp điện tử",
+          "Nông nghiệp",
+          "Du lịch",
+          "Khai thác dầu khí"
+        ],
+        "answer": 1,
+        "why": "Đại hội V nhấn mạnh nông nghiệp là mặt trận hàng đầu, đồng thời phát triển công nghiệp hàng tiêu dùng và một số ngành công nghiệp nặng."
+      },
+      {
+        "q": "Hội nghị Trung ương 8 khóa V (6/1985) gắn với chủ trương nào?",
+        "options": [
+          "Chiến tranh đặc biệt",
+          "Đồng khởi",
+          "Giá – lương – tiền",
+          "Hiệp định Paris"
+        ],
+        "answer": 2,
+        "why": "Hội nghị Trung ương 8 khóa V (6/1985) đặt vấn đề xóa bỏ cơ chế bao cấp trong giá, lương, tiền và chuyển sang hạch toán."
+      },
+      {
+        "q": "Đại hội nào mở đầu công cuộc Đổi mới toàn diện ở Việt Nam?",
+        "options": [
+          "Đại hội VI (12/1986)",
+          "Đại hội III (1960)",
+          "Đại hội IV (1976)",
+          "Đại hội V (1982)"
+        ],
+        "answer": 0,
+        "why": "Đại hội VI tháng 12/1986 đề ra đường lối đổi mới toàn diện, trước hết là đổi mới tư duy kinh tế."
+      }
+    ]
+  },
+  {
+    "id": "doi-moi-hoi-nhap",
+    "short": "1986–2021",
+    "name": "Đổi mới và hội nhập",
+    "subtitle": "Từ đổi mới tư duy đến tầm nhìn phát triển 2045",
+    "icon": "🚀",
+    "badge": "Cánh buồm hội nhập",
+    "palette": [
+      "#9ac7da",
+      "#e3edf1",
+      "#689fbe",
+      "#3f6c98"
+    ],
+    "goal": "Tương lai 2045",
+    "overview": "Đổi mới tư duy và đường lối; công nghiệp hóa, hội nhập quốc tế và mục tiêu phát triển dài hạn.",
+    "questions": [
+      {
+        "q": "Đại hội VI (1986) nhấn mạnh tinh thần tự đánh giá nào?",
+        "options": [
+          "Nhìn thẳng vào sự thật, đánh giá đúng sự thật, nói rõ sự thật",
+          "Chỉ nêu thành tựu, không nêu hạn chế",
+          "Giữ nguyên mọi chính sách",
+          "Tập trung vào chỉ tiêu quân sự"
+        ],
+        "answer": 0,
+        "why": "Đại hội VI phê bình những khuyết điểm, sai lầm và đề ra đường lối đổi mới toàn diện."
+      },
+      {
+        "q": "Ba chương trình kinh tế lớn được xác định tại Đại hội VI là gì?",
+        "options": [
+          "Giao thông – xây dựng – du lịch",
+          "Lương thực, thực phẩm – hàng tiêu dùng – hàng xuất khẩu",
+          "Khai khoáng – quốc phòng – năng lượng hạt nhân",
+          "Bất động sản – dịch vụ – tài chính"
+        ],
+        "answer": 1,
+        "why": "Đại hội VI nhấn mạnh ba chương trình kinh tế: lương thực thực phẩm, hàng tiêu dùng và hàng xuất khẩu."
+      },
+      {
+        "q": "Đại hội VII (1991) thông qua văn kiện quan trọng nào?",
+        "options": [
+          "Hiệp định Paris",
+          "Hiệp định Genève",
+          "Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên CNXH",
+          "Tuyên ngôn Độc lập"
+        ],
+        "answer": 2,
+        "why": "Đại hội VII năm 1991 thông qua Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội."
+      },
+      {
+        "q": "Việt Nam gia nhập ASEAN vào năm nào?",
+        "options": [
+          "1995",
+          "1986",
+          "2007",
+          "2021"
+        ],
+        "answer": 0,
+        "why": "Việt Nam trở thành thành viên ASEAN ngày 28/7/1995, đánh dấu bước tiến trong hội nhập khu vực."
+      },
+      {
+        "q": "Đại hội VIII (1996) nhấn mạnh nhiệm vụ nào?",
+        "options": [
+          "Khởi nghĩa giành chính quyền",
+          "Đẩy mạnh công nghiệp hóa, hiện đại hóa",
+          "Kháng chiến toàn quốc",
+          "Khoán 100"
+        ],
+        "answer": 1,
+        "why": "Đại hội VIII năm 1996 xác định bước chuyển sang thời kỳ đẩy mạnh công nghiệp hóa, hiện đại hóa."
+      },
+      {
+        "q": "Đại hội IX (2001) xác định mô hình kinh tế tổng quát là gì?",
+        "options": [
+          "Kinh tế chỉ huy thời chiến",
+          "Kinh tế tự cấp tự túc",
+          "Kinh tế thị trường định hướng xã hội chủ nghĩa",
+          "Kinh tế thuộc địa"
+        ],
+        "answer": 2,
+        "why": "Đại hội IX xác định kinh tế thị trường định hướng xã hội chủ nghĩa là mô hình kinh tế tổng quát của thời kỳ quá độ."
+      },
+      {
+        "q": "Việt Nam trở thành thành viên của WTO vào năm nào?",
+        "options": [
+          "2007",
+          "1991",
+          "1975",
+          "2016"
+        ],
+        "answer": 0,
+        "why": "Việt Nam chính thức gia nhập Tổ chức Thương mại Thế giới (WTO) ngày 11/1/2007."
+      },
+      {
+        "q": "Đại hội XI (2011) thông qua nội dung nào sau đây?",
+        "options": [
+          "Luận cương chính trị 1930",
+          "Cương lĩnh bổ sung, phát triển năm 2011",
+          "Hiệp định Sơ bộ",
+          "Chỉ thị Kháng chiến kiến quốc"
+        ],
+        "answer": 1,
+        "why": "Đại hội XI thông qua Cương lĩnh (bổ sung, phát triển năm 2011), kế thừa và phát triển Cương lĩnh 1991."
+      },
+      {
+        "q": "Đại hội XII (2016) đặc biệt nhấn mạnh nhiệm vụ nào?",
+        "options": [
+          "Mở chiến dịch Điện Biên Phủ",
+          "Thành lập Mặt trận Việt Minh",
+          "Tăng cường xây dựng, chỉnh đốn Đảng",
+          "Thành lập Đảng Cộng sản Việt Nam"
+        ],
+        "answer": 2,
+        "why": "Đại hội XII đề cao xây dựng, chỉnh đốn Đảng, phòng chống suy thoái, tham nhũng, tiêu cực."
+      },
+      {
+        "q": "Đại hội XIII (2021) đề ra mục tiêu đến năm 2045 là gì?",
+        "options": [
+          "Trở thành nước phát triển, thu nhập cao",
+          "Tổ chức Tổng tuyển cử đầu tiên",
+          "Thành lập Đảng",
+          "Kết thúc Chiến tranh thế giới thứ hai"
+        ],
+        "answer": 0,
+        "why": "Đại hội XIII đặt mục tiêu đến năm 2045 Việt Nam trở thành nước phát triển, thu nhập cao."
+      }
+    ]
+  }
+];
+const OUTFITS=[
+{id:'kaki',name:'Áo kaki truyền thống',price:0,coat:'#75836c',pants:'#514f45',cap:'#657c55',accent:'#e6ddc7',desc:'Trang phục khởi đầu – luôn sở hữu.'},
+{id:'thanh-nien',name:'Thanh niên tìm đường',price:160,coat:'#9c775e',pants:'#3c5363',cap:'#7c604b',accent:'#e4b77d',desc:'Tông nâu giản dị, gợi hành trình 1911.'},
+{id:'ao-trang',name:'Áo sơ mi học giả',price:320,coat:'#e6ebdc',pants:'#505e66',cap:'#727f7a',accent:'#7d948f',desc:'Gắn với hành trình học hỏi và tri thức.'},
+{id:'cuu-quoc',name:'Áo Thanh niên cứu quốc',price:490,coat:'#4a7e64',pants:'#44533d',cap:'#386c56',accent:'#daba62',desc:'Màu xanh của phong trào quần chúng.'},
+{id:'chien-si',name:'Trang phục hành quân',price:720,coat:'#5c8063',pants:'#2f4b40',cap:'#4f6c50',accent:'#cdd596',desc:'Phong cách hành quân qua dãy Trường Sơn.'},
+{id:'le-doc-lap',name:'Trang phục ngày độc lập',price:950,coat:'#e7dfc7',pants:'#6b6659',cap:'#e4d8b7',accent:'#c54a3d',desc:'Trang phục trang trọng với điểm nhấn đỏ.'},
+{id:'hoi-nhap',name:'Trang phục hội nhập',price:1250,coat:'#2f6c89',pants:'#344d68',cap:'#30617c',accent:'#f0c974',desc:'Phong cách hiện đại chào tương lai.'}
+];
+const $=s=>document.querySelector(s);
+const saveKey='vnr_hanh_trinh_7man_2026_v1';
+const defaults=()=>({coins:0,unlocked:1,cleared:{},best:{},badges:[],owned:['kaki'],outfit:'kaki',badge:'',muted:false});
+function load(){try{const s=JSON.parse(localStorage.getItem(saveKey));if(!s||typeof s!=='object')return defaults();const v={...defaults(),...s};v.unlocked=Math.max(1,Math.min(7,Number(v.unlocked)||1));v.coins=Math.max(0,Number(v.coins)||0);if(!Array.isArray(v.badges))v.badges=[];if(!Array.isArray(v.owned))v.owned=['kaki'];if(!v.owned.includes('kaki'))v.owned.unshift('kaki');return v}catch{return defaults()}}
+let save=load();function persist(){try{localStorage.setItem(saveKey,JSON.stringify(save))}catch{}}
+const W=1120,H=550,GROUND=450,GRAV=1700,SPEED=305,JUMP=-700;
+const canvas=$('#gameCanvas'),ctx=canvas.getContext('2d'),overlay=$('#overlay'),panel=$('#panel');
+let mode='menu',levelIndex=0,answered=0,player={x:70,y:GROUND-57,w:35,h:57,vx:0,vy:0,onGround:true,dir:1},cam=0,runTime=0,heart=5,mistakes=0,pending=0,checkpoint=70,collectibles=[],returnMode='menu',resumeFrom='pause';
+let last=performance.now(),ticks=0,invulnerable=0,lastHud='',toastTime=0,toastText='';
+const held={left:false,right:false,jump:false};let audio=null;
+const GATES=Array.from({length:10},(_,i)=>530+i*500);const GOAL=GATES[9]+370,WORLD=GOAL+400;
+const HAZARDS=Array.from({length:10},(_,i)=>[{x:GATES[i]-292,w:58},{x:GATES[i]-170,w:47}]).flat();
+const PLATFORMS=Array.from({length:10},(_,i)=>[{x:GATES[i]-235,y:GROUND-100,w:112,h:20},{x:GATES[i]+25,y:GROUND-128,w:105,h:20}]).flat();
+const alpha=['A','B','C','D'];
+function escapeHtml(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')}
+function fmt(sec){const a=Math.floor(sec);return `${String(Math.floor(a/60)).padStart(2,'0')}:${String(a%60).padStart(2,'0')}`}
+function getLevel(){return LEVELS[levelIndex]}
+function sound(freq=500,dur=.1,wave='sine'){if(save.muted)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;audio=audio||new A();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type=wave;o.frequency.value=freq;g.gain.setValueAtTime(.06,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+dur);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+dur)}catch{}}
+function soundWin(){[530,660,800,1040].forEach((f,i)=>setTimeout(()=>sound(f,.17,'triangle'),i*130))}
+function show(html,{wide=false}={}){panel.className='panel'+(wide?' wide':'');panel.innerHTML=html;overlay.hidden=false;panel.scrollTop=0}
+function hide(){overlay.hidden=true}
+function clearHeld(){held.left=held.right=held.jump=false}
+function hud(){const d=getLevel(),key=[mode,levelIndex,answered,heart,pending,Math.floor(runTime),save.coins,save.badges.length,save.muted].join('|');if(lastHud===key)return;lastHud=key;$('#totalCoins').textContent=save.coins.toLocaleString('vi-VN');$('#totalBadges').textContent=`${save.badges.length}/7`;$('#btnSound').textContent=save.muted?'🔇':'🔊';$('#hudIcon').textContent=d.icon;$('#hudKicker').textContent=mode==='menu'||mode==='shop'?'HÀNH TRÌNH 7 CHỦ ĐỀ':`CHẶNG ${levelIndex+1} / 7  •  ${d.short}`;$('#hudTitle').textContent=d.name;$('#hudQuestions').textContent=`${String(answered).padStart(2,'0')}/10`;$('#hudHearts').textContent='♥'.repeat(heart)+'♡'.repeat(5-heart);$('#hudStageCoins').textContent='+'+pending;$('#hudTime').textContent=fmt(runTime);$('#meterText').textContent=`${answered} / 10`;$('#meterDots').innerHTML=Array.from({length:10},(_,i)=>`<span class="dot ${i<answered?'done':i===answered?'now':''}"></span>`).join('');$('#sceneLabel').textContent=mode==='menu'||mode==='shop'?'🗺️ Chọn màn để bắt đầu':`${d.icon} ${d.short} · ${d.name}`}
+function levelCards(){return LEVELS.map((l,i)=>{const locked=i>=save.unlocked,clear=!!save.cleared[i],stars=(save.best[i]?.stars||0);return `<button class="level-tile ${locked?'locked':''}" ${locked?'disabled':''} data-start="${i}"><div class="tile-top"><span>${l.icon}</span><span class="tile-no">${locked?'🔒':'CHẶNG '+(i+1)}</span></div><strong>${escapeHtml(l.name)}</strong><small>${l.short} · 10 câu hỏi</small><span class="stars">${clear?'★'.repeat(stars)+'☆'.repeat(3-stars):locked?'Chưa mở khóa':'▶ Sẵn sàng'}</span></button>`}).join('')}
+function menu(){mode='menu';clearHeld();hud();show(`<span class="tag">🗺️ BẢN ĐỒ LỊCH SỬ</span><div class="banner-art">🚢 ✊ 🌿 🏔️ 🇻🇳 🌾 🚀</div><h2>7 chặng đường. 70 bài học.</h2><p>Vượt chướng ngại vật và trả lời <strong>đúng 10 câu/màn</strong> để chạm đích. Hoàn thành sẽ nhận <strong>xu + huy hiệu</strong>, mở màn mới và mua trang phục.</p><div class="level-grid">${levelCards()}</div><div class="howto"><span>← → / A D: Di chuyển</span><span>Space / ↑: Nhảy</span><span>1–4: Đáp án</span><span>P: Tạm dừng</span></div><div class="btn-row"><button class="btn secondary" data-act="shop">👕 Vào cửa hàng</button><button class="btn dark" data-act="guide">❔ Hướng dẫn</button><button class="btn teal" data-act="start-next">▶ Chơi màn tiếp theo</button><button class="btn secondary sm" data-act="reset">↺ Xóa tiến độ</button></div>`,{wide:true})}
+function guide(){mode='guide';show(`<span class="tag">📖 HƯỚNG DẪN</span><h2>Cách chơi Hành Trình Lịch Sử</h2><p><strong>1.</strong> Chạy và nhảy để tránh gai; thu thập đồng xu trên đường. <strong>2.</strong> Đến cổng lịch sử, chọn đáp án A–D (phím 1–4). <strong>3.</strong> Trả lời đúng để mở cổng, đủ <strong>10/10</strong> sẽ tới đích. <strong>4.</strong> Mỗi màn hoàn thành nhận xu, huy hiệu và mở màn tiếp theo. <strong>5.</strong> Dùng xu mua trang phục; huy hiệu mở khóa phụ kiện.</p><div class="howto"><span>Máy tính: ← → A D / Space</span><span>Điện thoại: phím cảm ứng</span><span>Phím 1–4: trả lời</span></div><p class="subtext">Trả lời sai bị trừ 1 tim nhưng được học lại câu đó. Nếu hết tim, bạn có thể hồi sức mà không mất tiến độ 10 câu.</p><div class="btn-row"><button class="btn" data-act="menu">← Bản đồ màn chơi</button></div>`)}
+function createCollectibles(){collectibles=[];for(let i=0;i<10;i++){collectibles.push({x:GATES[i]-395,y:GROUND-62,taken:false,val:5});collectibles.push({x:GATES[i]-178,y:GROUND-156,taken:false,val:5});}}
+function startLevel(i){i=Number(i);if(!Number.isInteger(i)||i<0||i>=save.unlocked||i>6)return;levelIndex=i;answered=0;heart=5;mistakes=0;pending=0;runTime=0;checkpoint=70;cam=0;invulnerable=0;player={x:70,y:GROUND-57,w:35,h:57,vx:0,vy:0,onGround:true,dir:1};clearHeld();createCollectibles();mode='playing';hide();hud();sound(650,.13)}
+function pause(){if(mode!=='playing')return;mode='paused';clearHeld();hud();show(`<span class="tag">⏸ TẠM DỪNG</span><h2>${escapeHtml(getLevel().name)}</h2><p>Đã vượt <strong>${answered}/10</strong> cổng hỏi • Đang có <strong>${pending} xu màn</strong>. Tiến độ màn hiện tại sẽ được giữ khi quay lại chơi.</p><div class="btn-row"><button class="btn teal" data-act="resume">▶ Tiếp tục</button><button class="btn secondary" data-act="shop">👕 Trang phục</button><button class="btn dark" data-act="notes">📖 Sổ tay</button><button class="btn secondary" data-act="menu">🗺️ Về bản đồ</button></div>`)}
+function resume(){mode='playing';hide();hud()}
+function openShop(){returnMode=(mode==='playing'||mode==='paused'||mode==='quiz'||mode==='feedback')?'paused':'menu';mode='shop';clearHeld();renderShop()}
+function renderShop(){hud();const outfit=OUTFITS.find(x=>x.id===save.outfit)||OUTFITS[0];const cards=OUTFITS.map(s=>{const owned=save.owned.includes(s.id),chosen=save.outfit===s.id;return `<button class="skin ${chosen?'chosen':owned?'owned':''}" data-skin="${s.id}" ${!owned&&save.coins<s.price?'title="Chưa đủ xu"':''}><div class="skin-head"><span class="swatch" style="background:${s.coat}"></span><span>${chosen?'✅':owned?'Đã có':'🔒'}</span></div><strong>${escapeHtml(s.name)}</strong><small>${escapeHtml(s.desc)}</small><span class="price">${chosen?'✓ Đang mặc':owned?'Mặc trang phục':`${s.price} 🪙`}</span></button>`}).join('');const badgeButtons=`<button class="pin ${save.badge===''?'active':''}" data-badge="">Không đeo</button>`+LEVELS.map((l,i)=>{const owned=save.badges.includes(l.id);return `<button class="pin ${save.badge===l.id?'active':''}" data-badge="${l.id}" ${!owned?'disabled':''}>${l.icon} ${escapeHtml(l.badge)}${owned?'':' 🔒'}</button>`}).join('');show(`<span class="tag">👕 CỬA HÀNG & TÙY CHỈNH</span><h2>Trang phục nhà thám hiểm lịch sử</h2><p>Dùng xu kiếm được khi vượt màn để mua trang phục. Mỗi màn đầu tiên vượt qua còn tặng <strong>một huy hiệu</strong> làm phụ kiện có thể đeo.</p><p id="shopNotice" style="display:none;background:#fae7d5;border:1px solid #e5b99a;padding:8px 11px;border-radius:8px;color:#974f38;font-weight:850"></p><div class="shop-layout"><div class="showcase"><canvas id="wardrobePreview" width="190" height="210"></canvas><div><strong>${escapeHtml(outfit.name)}</strong><small>Trang phục đang sử dụng<br>🪙 ${save.coins.toLocaleString('vi-VN')} xu · 🏅 ${save.badges.length} huy hiệu</small></div></div><div><div class="wardrobe">${cards}</div></div></div><div style="text-align:left;margin-top:13px"><strong style="font-size:13px">🏅 Huy hiệu trang trí (thưởng khi phá đảo màn)</strong><div class="badges">${badgeButtons}</div></div><div class="btn-row"><button class="btn secondary" data-act="shop-back">← Quay lại</button></div>`,{wide:true});drawShopPreview()}
+function shopBack(){if(returnMode==='paused')pauseFromShop();else menu()}
+function pauseFromShop(){mode='playing';pause()}
+function buyOrEquip(id){const s=OUTFITS.find(o=>o.id===id);if(!s)return;if(save.owned.includes(id)){save.outfit=id;persist();sound(750,.11);renderShop();return}if(save.coins<s.price){const n=$("#shopNotice");if(n){n.style.display="block";n.textContent=`Bạn cần thêm ${s.price-save.coins} xu để mở khóa trang phục này.`;}return}save.coins-=s.price;save.owned.push(id);save.outfit=id;persist();soundWin();renderShop()}
+function equipBadge(id){if(id && !save.badges.includes(id))return;save.badge=id;persist();renderShop()}
+function question(){if(mode!=='playing'||answered>=10)return;mode='quiz';clearHeld();const o=getLevel().questions[answered];show(`<span class="tag">🔒 CỔNG KIẾN THỨC ${answered+1} / 10</span><h2>${escapeHtml(getLevel().name)}</h2><p style="font-weight:850;color:#153c47;font-size:16px">${escapeHtml(o.q)}</p><div class="option-grid">${o.options.map((v,i)=>`<button class="answer-btn" data-answer="${i}"><span class="key">${i+1}</span><span>${escapeHtml(v)}</span></button>`).join('')}</div><p class="subtext">Chọn đáp án bằng cách nhấn vào ô hoặc phím số 1–4.</p>`)}
+function answer(i){if(mode!=='quiz')return;const q=getLevel().questions[answered];const right=i===q.answer;mode='feedback';const buttons=[...panel.querySelectorAll('[data-answer]')];buttons.forEach((b,j)=>{b.disabled=true;if(j===q.answer)b.classList.add('right');if(j===i&&!right)b.classList.add('wrong')});if(right){answered++;pending+=12;checkpoint=GATES[answered-1]+85;sound(810,.13);setTimeout(()=>sound(990,.15),100)}else{mistakes++;heart=Math.max(0,heart-1);sound(220,.18,'sawtooth')}
+const f=document.createElement('div');f.className='explain'+(right?'':' bad');f.innerHTML=`<strong>${right?'✅ Chính xác! +12 xu':'❌ Chưa đúng! '+(heart?'Mất 1 tim.':'Bạn đã hết tim.')}</strong><div><strong>Đáp án đúng: ${alpha[q.answer]}.</strong> ${escapeHtml(q.options[q.answer])}</div><div>${escapeHtml(q.why)}</div>`;panel.appendChild(f);
+const row=document.createElement('div');row.className='btn-row';row.innerHTML=right?'<button class="btn teal" data-act="correct-next">✓ Mở cổng, đi tiếp →</button>':heart?'<button class="btn" data-act="retry">↻ Thử trả lời lại</button>':'<button class="btn" data-act="revive">💗 Hồi sức và thử lại</button>';panel.appendChild(row);hud()}
+function revive(){heart=5;pending=Math.max(0,pending-15);mode='playing';question();hud()}
+function correctNext(){mode='playing';hide();player.x=Math.max(player.x,GATES[answered-1]+75);player.y=GROUND-player.h;player.vy=0;player.onGround=true;cam=Math.max(0,Math.min(WORLD-W,player.x-W*.37));hud()}
+function notebook(){const from=mode;returnMode=(from==='playing'||from==='paused')?'paused':'menu';mode='notes';clearHeld();const max=from==='menu'?10:Math.max(10,answered);const arr=getLevel().questions.slice(0,max);show(`<span class="tag">📚 SỔ TAY KIẾN THỨC</span><h2>${escapeHtml(getLevel().name)}</h2><p>Các nội dung này giúp ôn tập sau khi vượt cổng. Xem lại cả câu hỏi và giải thích.</p><div class="notebook">${arr.map((q,i)=>`<article class="note"><strong>${String(i+1).padStart(2,'0')}. ${escapeHtml(q.q)}</strong><p><b>Đáp án:</b> ${escapeHtml(q.options[q.answer])}<br>${escapeHtml(q.why)}</p></article>`).join('')}</div><div class="btn-row"><button class="btn secondary" data-act="notes-back">← Quay lại</button></div>`)}
+function notesBack(){if(returnMode==='paused')pauseFromShop();else menu()}
+function toast(str){toastText=str;toastTime=2.5;$('#toast').textContent=str;$('#toast').hidden=false}
+function fall(){if(mode!=='playing'||invulnerable>0)return;heart=Math.max(0,heart-1);invulnerable=1.5;sound(190,.15,'square');player.x=checkpoint;player.y=GROUND-player.h;player.vy=0;player.onGround=true;cam=Math.max(0,player.x-W*.35);if(heart===0){mode='exhausted';clearHeld();show(`<span class="tag">💗 HẾT TIM</span><h2>Hành trình chưa dừng lại!</h2><p>Bạn đã vượt <strong>${answered}/10</strong> câu. Hồi 5 tim và tiếp tục ngay từ cổng gần nhất. Tiến độ kiến thức vẫn được giữ.</p><div class="btn-row"><button class="btn teal" data-act="revive-run">♥ Hồi 5 tim</button><button class="btn secondary" data-act="menu">🗺️ Chọn màn</button></div>`)}hud()}
+function reviveRun(){heart=5;pending=Math.max(0,pending-15);mode='playing';hide();hud()}
+function complete(){if(mode!=='playing')return;mode='complete';clearHeld();const l=getLevel(),first=!save.cleared[levelIndex];const stars=mistakes===0?3:mistakes<=3?2:1;const bonus=first?100+levelIndex*20:25;const flawless=mistakes===0?65:0;const payout=pending+bonus+flawless;save.coins+=payout;save.cleared[levelIndex]=true;save.unlocked=Math.max(save.unlocked,Math.min(7,levelIndex+2));if(first&&!save.badges.includes(l.id))save.badges.push(l.id);const old=save.best[levelIndex];if(!old||stars>old.stars||stars===old.stars&&runTime<old.time)save.best[levelIndex]={stars,time:Math.round(runTime),mistakes};persist();hud();soundWin();show(`<span class="tag">🏁 CHINH PHỤC THÀNH CÔNG · CHẶNG ${levelIndex+1}/7</span><div class="banner-art">${l.icon} ⭐ 🇻🇳</div><h2>${escapeHtml(l.goal)}</h2><p>Xuất sắc! Bạn đã trả lời đúng toàn bộ <strong>10/10 câu hỏi</strong> của chủ đề <strong>${escapeHtml(l.name)}</strong>.</p><div class="reward-box"><div><strong>+${payout} 🪙</strong><small>Xu nhận được</small></div><div><strong>${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</strong><small>Đánh giá màn</small></div><div><strong>${first?'🏅 Mới':'🏅 Đã có'}</strong><small>${escapeHtml(l.badge)}</small></div></div><p class="subtext">Số lần sai: ${mistakes} · Thời gian: ${fmt(runTime)} · Tổng xu: ${save.coins}. ${first?'Đã mở khóa màn tiếp theo và huy hiệu mới!':'Lượt chơi lại – bạn vẫn nhận xu thưởng.'}</p><div class="btn-row">${levelIndex<6?'<button class="btn teal" data-act="next-level">▶ Màn tiếp theo</button>':'<button class="btn teal" data-act="menu">🏆 Xem toàn bộ hành trình</button>'}<button class="btn secondary" data-act="shop">👕 Đổi trang phục</button><button class="btn secondary" data-act="menu">🗺️ Bản đồ</button></div>`)}
+function resetPrompt(){const agree=window.confirm('Xóa toàn bộ xu, huy hiệu, trang phục đã mua và tiến độ 7 màn? Thao tác không thể hoàn tác.');if(agree){save=defaults();persist();menu()}}
+// Drawing helpers
+function rect(c,x,y,w,h,fill){c.fillStyle=fill;c.fillRect(Math.round(x),Math.round(y),Math.max(0,Math.ceil(w)),Math.max(0,Math.ceil(h)))}
+function rr(c,x,y,w,h,r,fill){c.fillStyle=fill;c.beginPath();c.roundRect(x,y,w,h,r);c.fill()}
+function star(c,x,y,r,color,rot=0){c.save();c.translate(x,y);c.rotate(rot);c.beginPath();for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,R=k%2?r*.47:r;k?c.lineTo(Math.cos(a)*R,Math.sin(a)*R):c.moveTo(Math.cos(a)*R,Math.sin(a)*R)}c.closePath();c.fillStyle=color;c.fill();c.restore()}
+function drawAvatar(c,x,y,scale=1,skinId=save.outfit,badgeId=save.badge,walking=0,dir=1){const outfit=OUTFITS.find(o=>o.id===skinId)||OUTFITS[0];c.save();c.translate(x,y);c.scale(scale*dir,scale);if(dir<0)c.translate(-38,0);
+// light hat, face, small white beard and coat – respectful stylized symbolic figure
+rect(c,9,2,22,6,outfit.cap);rect(c,6,8,29,7,outfit.cap);rect(c,12,15,20,16,'#e6bc91');rect(c,9,20,5,9,'#dba77f');rect(c,14,20,3,3,'#3a4240');rect(c,26,20,3,3,'#3a4240');rect(c,14,28,17,3,'#575043');rect(c,15,30,16,8,'#eee9dc');rect(c,19,38,8,5,'#f6eee1');rect(c,8,39,28,16,outfit.coat);rect(c,5,40,6,15,outfit.coat);rect(c,34,40,5,15,outfit.coat);rect(c,18,39,3,17,outfit.accent);rect(c,10,55+walking,9,7,outfit.pants);rect(c,27,55-walking,9,7,outfit.pants);rect(c,9,60+walking,12,4,'#4d4237');rect(c,27,60-walking,12,4,'#4d4237');if(badgeId){star(c,30,45,5,'#f4c158');rect(c,29,44,2,2,'#fff7c7')}
+c.restore()}
+function drawShopPreview(){const e=$('#wardrobePreview');if(!e)return;const c=e.getContext('2d');c.clearRect(0,0,e.width,e.height);const grd=c.createLinearGradient(0,0,0,e.height);grd.addColorStop(0,'#cce5d9');grd.addColorStop(1,'#e6e1c9');rect(c,0,0,e.width,e.height,grd);rect(c,0,183,e.width,27,'#81a17c');rect(c,0,190,e.width,20,'#8d745b');drawAvatar(c,38,16,2.8,save.outfit,save.badge,0);star(c,158,40,15,'#e8ae48');c.fillStyle='#4c675c';c.font='bold 11px sans-serif';c.fillText('NHÂN VẬT',106,177)}
+function theme(){return getLevel().palette}
+function sky(){const [top,bot,middle,dark]=theme();const skyGrad=ctx.createLinearGradient(0,0,0,GROUND);skyGrad.addColorStop(0,top);skyGrad.addColorStop(.68,bot);skyGrad.addColorStop(1,'#f3e4c2');rect(ctx,0,0,W,H,skyGrad);ctx.fillStyle='#fff6c1b7';ctx.beginPath();ctx.arc(960,96,41,0,Math.PI*2);ctx.fill();for(let i=-1;i<12;i++){const x=i*170-(cam*.13%170);cloud(x,65+(i%3)*46,.8)}for(let k=-2;k<15;k++){hill(k*210-cam*.18,440,170,middle);hill(k*178-cam*.28,463,120,dark)}}
+function cloud(x,y,s){ctx.save();ctx.translate(x,y);ctx.scale(s,s);rr(ctx,0,13,106,24,12,'#ffffff8c');rr(ctx,17,0,48,37,17,'#ffffffe0');rr(ctx,54,7,42,29,17,'#ffffffcf');ctx.restore()}
+function hill(x,y,r,color){ctx.beginPath();ctx.ellipse(x,y,r,r*.5,0,Math.PI,0,true);ctx.lineTo(x+r,y+45);ctx.lineTo(x-r,y+45);ctx.closePath();ctx.fillStyle=color;ctx.globalAlpha=.47;ctx.fill();ctx.globalAlpha=1}
+function mountainTree(x,variation){const sx=x-cam*.55;if(sx<-120||sx>W+120)return;rect(ctx,sx,GROUND-105,15,105,'#876f56');ctx.fillStyle=variation?'#4c977b':'#70a383';for(const [dx,dy,r] of [[-20,-104,27],[18,-128,32],[-7,-158,29]]){ctx.beginPath();ctx.arc(sx+dx,GROUND+dy,r,0,Math.PI*2);ctx.fill()}}
+function landmark(x,i){const sx=x-cam*.43;if(sx<-340||sx>W+340)return;const id=levelIndex;const y=GROUND-18;ctx.save();ctx.globalAlpha=.7;const stone=id===6?'#6d8f9f':'#ac9a79';
+if(id===0){rect(ctx,sx,y-80,190,65,'#7e9699');rect(ctx,sx+40,y-112,110,35,'#e4d0ae');rect(ctx,sx+81,y-145,10,35,'#6b6c66');rect(ctx,sx+18,y-16,210,8,'#735e50')}
+else if(id===1){for(let a=0;a<5;a++){rect(ctx,sx+a*50,y-42,32,42,'#baa273');rect(ctx,sx+a*50,y-55,32,7,'#7eaa6b')}rect(ctx,sx+120,y-143,12,100,'#705841');rect(ctx,sx+132,y-138,68,39,'#b74741')}
+else if(id===2){for(let a=0;a<6;a++){rect(ctx,sx+a*34,y-150,8,150,'#648066');for(let b=0;b<3;b++){ctx.fillStyle='#407b5f';ctx.beginPath();ctx.arc(sx+a*34+4,y-149+b*33,15,0,7);ctx.fill()}}rect(ctx,sx+12,y-68,145,64,'#be9c76');ctx.fillStyle='#755747';ctx.beginPath();ctx.moveTo(sx-6,y-68);ctx.lineTo(sx+83,y-132);ctx.lineTo(sx+171,y-68);ctx.fill()}
+else if(id===3){rect(ctx,sx,y-100,209,94,stone);rect(ctx,sx-13,y-112,231,14,'#867a70');for(let a=0;a<5;a++)rect(ctx,sx+14+a*43,y-79,18,74,'#627a7b');rect(ctx,sx+95,y-160,9,51,'#6b554a');rect(ctx,sx+104,y-159,64,37,'#bd4e44')}
+else if(id===4){for(let a=0;a<7;a++){rect(ctx,sx+a*29,y-132,8,130,'#598267');ctx.beginPath();ctx.arc(sx+a*29,y-135,20,0,7);ctx.fillStyle='#3f916a';ctx.fill()}rect(ctx,sx-25,y-20,235,15,'#735b44')}
+else if(id===5){rect(ctx,sx-16,y-106,215,102,'#b5a28c');for(let a=0;a<4;a++)rect(ctx,sx+6+a*53,y-73,27,44,'#7a8d8a');rect(ctx,sx+135,y-175,25,67,'#b9a392');rect(ctx,sx+8,y-115,165,15,'#837a69');rect(ctx,sx+181,y-59,57,52,'#81a16f')}
+else{for(let a=0;a<6;a++){const hh=95+(a*37%90);rect(ctx,sx+a*44,y-hh,33,hh,'#7395a7');for(let yy=0;yy<3;yy++)for(let xx=0;xx<2;xx++)rect(ctx,sx+a*44+6+xx*14,y-hh+15+yy*24,8,10,'#d4e5da')}rect(ctx,sx+112,y-190,10,45,'#65879b')}
+ctx.restore()}
+function ground(){rect(ctx,0,GROUND,W,H-GROUND,'#906d4f');rect(ctx,0,GROUND,W,12,'#5e915f');rect(ctx,0,GROUND+12,W,13,'#b38b64');rect(ctx,0,GROUND+26,W,56,'#9f7956');for(let i=Math.floor(cam/43)-1;i<Math.ceil((cam+W)/43)+1;i++){const x=i*43-cam;rect(ctx,x+8,GROUND+33+(i%3)*14,24,7,i%2?'#bd9472':'#866346');rect(ctx,x+13,GROUND+78+(i%4)*3,23,6,'#b78f6a')}for(let i=Math.floor(cam/80)-1;i<Math.ceil((cam+W)/80)+1;i++){const x=i*80-cam;rect(ctx,x,GROUND-5,3,6,'#538657');rect(ctx,x+5,GROUND-11,3,12,'#54885b')}}
+function drawWorld(){sky();for(let i=-1;i<18;i++)landmark(i*520+130,i);for(let i=0;i<14;i++)mountainTree(i*450+100,i%2);ground();
+for(const plat of PLATFORMS){const x=plat.x-cam;if(x<-140||x>W+50)continue;rr(ctx,x,plat.y,plat.w,plat.h,4,'#b38660');rect(ctx,x,plat.y,plat.w,8,'#5a8c60');for(let i=7;i<plat.w;i+=30)rect(ctx,x+i,plat.y+10,18,4,'#d1ae82')}
+for(const h of HAZARDS){const x=h.x-cam;if(x<-100||x>W+80)continue;rect(ctx,x-5,GROUND-9,h.w+10,9,'#a17a56');const ct=4;for(let j=0;j<ct;j++){ctx.fillStyle=j%2?'#d56c59':'#af584b';ctx.beginPath();ctx.moveTo(x+h.w*j/ct,GROUND-9);ctx.lineTo(x+h.w*(j+.5)/ct,GROUND-42);ctx.lineTo(x+h.w*(j+1)/ct,GROUND-9);ctx.closePath();ctx.fill()}}
+for(const co of collectibles){if(co.taken)continue;const x=co.x-cam;if(x<-50||x>W+50)continue;const y=co.y+Math.sin(ticks*4+co.x)*5;ctx.beginPath();ctx.arc(x,y,15,0,Math.PI*2);ctx.fillStyle='#fff2bd77';ctx.fill();ctx.beginPath();ctx.arc(x,y,11,0,Math.PI*2);ctx.fillStyle='#edb146';ctx.fill();ctx.strokeStyle='#9d6a20';ctx.lineWidth=2;ctx.stroke();rect(ctx,x-2,y-6,4,12,'#fff1a0')}
+for(let i=0;i<10;i++){const x=GATES[i]-cam;if(x<-80||x>W+110)continue;const opened=i<answered;ctx.globalAlpha=opened?.28:1;rr(ctx,x-10,GROUND-158,50,158,4,opened?'#729e85':'#b46d4a');rr(ctx,x-15,GROUND-165,60,20,4,opened?'#8cbba4':'#805240');for(let j=0;j<4;j++)rect(ctx,x+1,GROUND-136+j*30,28,9,'#e5b484');rr(ctx,x-15,GROUND-238,60,36,6,'#fff0ca');ctx.fillStyle='#815335';ctx.font='bold 20px monospace';ctx.fillText(String(i+1).padStart(2,'0'),x,GROUND-214);if(opened){ctx.fillStyle='#ffffff';ctx.font='bold 28px sans-serif';ctx.fillText('✓',x+2,GROUND-82)}else{rr(ctx,x-8,GROUND-96,45,54,6,'#755040');ctx.fillStyle='#f9d990';ctx.font='bold 36px Georgia';ctx.fillText('?',x+5,GROUND-57)}ctx.globalAlpha=1}
+const finish=GOAL-cam;if(finish>-120&&finish<W+150){rect(ctx,finish,GROUND-265,8,260,'#7e654e');rect(ctx,finish+8,GROUND-263,117,77,'#c43e39');star(ctx,finish+66,GROUND-226,20,'#ffdc75');rr(ctx,finish-45,GROUND-300,200,28,5,'#fff2cf');ctx.fillStyle='#80593c';ctx.font='bold 16px monospace';ctx.fillText('ĐÍCH CHINH PHỤC',finish-34,GROUND-280)}
+if(invulnerable>0&&Math.floor(ticks*12)%2===0)return;const walk=player.onGround&&Math.abs(player.vx)>10?Math.sin(ticks*15)*2:0;drawAvatar(ctx,player.x-cam,player.y-6,.88,save.outfit,save.badge,walk,player.dir)}
+function update(dt){ticks+=dt;if(toastTime>0){toastTime-=dt;if(toastTime<=0)$('#toast').hidden=true}if(mode!=='playing')return;runTime+=dt;invulnerable=Math.max(0,invulnerable-dt);const p=player;let dx=(Number(held.right)-Number(held.left));p.vx=dx*SPEED;if(dx)p.dir=dx;p.x=Math.max(20,Math.min(WORLD-60,p.x+p.vx*dt));if(held.jump&&p.onGround){p.vy=JUMP;p.onGround=false;sound(380,.055)}const prevBottom=p.y+p.h;p.vy+=GRAV*dt;p.y+=p.vy*dt;p.onGround=false;if(p.y+p.h>=GROUND){p.y=GROUND-p.h;p.vy=0;p.onGround=true}for(const f of PLATFORMS){if(p.vy>=0&&p.x+p.w>f.x+5&&p.x<f.x+f.w-5&&prevBottom<=f.y+11&&p.y+p.h>=f.y&&p.y+p.h<f.y+30){p.y=f.y-p.h;p.vy=0;p.onGround=true}}
+for(const coin of collectibles){if(!coin.taken&&Math.abs(p.x+p.w/2-coin.x)<25&&Math.abs(p.y+p.h/2-coin.y)<36){coin.taken=true;pending+=coin.val;sound(1050,.055)}}
+for(const h of HAZARDS){if(p.x+p.w>h.x+10&&p.x<h.x+h.w-10&&p.y+p.h>GROUND-30&&p.y<GROUND){fall();break}}
+if(mode==='playing'&&answered<10&&p.x+p.w>=GATES[answered]-15){p.x=GATES[answered]-p.w-25;p.vy=0;question()}
+if(mode==='playing'&&answered===10&&p.x>=GOAL-50){complete()}
+const target=Math.max(0,Math.min(WORLD-W,p.x-W*.34));cam+=(target-cam)*Math.min(1,dt*6);hud()}
+function frame(t){const dt=Math.min(.034,(t-last)/1000||.016);last=t;update(dt);ctx.clearRect(0,0,W,H);drawWorld();requestAnimationFrame(frame)}
+// Navigation and input
+panel.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;if(b.dataset.start!==undefined){startLevel(b.dataset.start);return}if(b.dataset.answer!==undefined){answer(Number(b.dataset.answer));return}if(b.dataset.skin!==undefined){buyOrEquip(b.dataset.skin);return}if(b.dataset.badge!==undefined){equipBadge(b.dataset.badge);return}const a=b.dataset.act;if(a==='menu')menu();else if(a==='shop')openShop();else if(a==='shop-back')shopBack();else if(a==='guide')guide();else if(a==='resume')resume();else if(a==='start-next'){const i=Math.min(save.unlocked-1,Math.max(0,LEVELS.findIndex((l,j)=>!save.cleared[j])));startLevel(i<0?save.unlocked-1:i)}else if(a==='next-level')startLevel(Math.min(levelIndex+1,6));else if(a==='notes')notebook();else if(a==='notes-back')notesBack();else if(a==='correct-next')correctNext();else if(a==='retry'){mode='playing';question()}else if(a==='revive')revive();else if(a==='revive-run')reviveRun();else if(a==='reset')resetPrompt()});
+$('#btnMap').onclick=()=>menu();$('#btnShop').onclick=()=>openShop();$('#btnSound').onclick=()=>{save.muted=!save.muted;persist();hud();if(!save.muted)sound(600,.08)};$('#btnNotes').onclick=()=>{if(mode==='playing'||mode==='paused'||mode==='menu')notebook()};$('#btnPause').onclick=()=>{if(mode==='playing')pause();else if(mode==='paused')resume()};
+function keyAction(key,on){if(key==='ArrowLeft'||key==='a'||key==='A')held.left=on;else if(key==='ArrowRight'||key==='d'||key==='D')held.right=on;else if([' ','ArrowUp','w','W'].includes(key))held.jump=on}
+document.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp',' ','ArrowDown'].includes(e.key))e.preventDefault();if(mode==='quiz'&&['1','2','3','4'].includes(e.key)){const b=panel.querySelector(`[data-answer="${Number(e.key)-1}"]`);if(b)b.click();return}if((e.key==='Enter'||e.key===' ')&&mode==='feedback'){panel.querySelector('[data-act="correct-next"],[data-act="retry"],[data-act="revive"]')?.click();return}if(e.key==='p'||e.key==='P'||e.key==='Escape'){if(mode==='playing')pause();else if(mode==='paused')resume();else if(mode==='notes')notesBack();return}if(mode==='playing')keyAction(e.key,true)});
+document.addEventListener('keyup',e=>keyAction(e.key,false));window.addEventListener('blur',()=>{clearHeld();if(mode==='playing')pause()});
+function touch(id,key){const el=$(id);el.addEventListener('pointerdown',e=>{e.preventDefault();el.classList.add('pressed');keyAction(key,true);try{el.setPointerCapture(e.pointerId)}catch{}});for(const type of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(type,e=>{e.preventDefault();el.classList.remove('pressed');keyAction(key,false)})}
+touch('#touchLeft','ArrowLeft');touch('#touchRight','ArrowRight');touch('#touchJump',' ');
+menu();hud();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
